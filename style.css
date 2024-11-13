@@ -34,10 +34,13 @@ html, body {
 }
 
 .vid {
-  filter: url(#filter1);
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.video-container {
+  filter: url(#filter1);
 }
 
 @media only screen and (max-width: 768px) {
