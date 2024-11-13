@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG FILTER</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="sketch.js"></script>
+</head>
+<body>
+    <div class="hero">
+      <div>
+        <video class="vid" loop autoplay muted preload="none">
+          <source src="assets/vid.mp4" type="video/mp4">
+        </video>
+        <svg>
+          <filter id="filter1" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+            <feBlend mode="normal" x="0%" y="0%" in="SourceGraphic" in2="flood" result="blend1" />
+              <!--VAIKUTTAA PIKSELAATIOON-->
+            <feImage class="ditherImage" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA5ElEQVQYlQXBgQbCUABA0fdrk0ySSZJJkiRJMjOTTGZmkiRJZiYzyczMzGQmfdrtHPH7/TgcDuR5zna7pWka9vs9aZqyXq8R0+mU5/OJoihcLhfG4zFBENDtdjmdToj3+81yueTz+WCaJnEcM5/PKcsSXdcRsizjeR6j0YjH40Gr1cJxHAaDAbfbDVHXNbvdjiRJWK1WfL9fLMsiyzI2mw1CVVV836fT6XA8HplMJoRhSK/X43w+I6IoYjabURQFmqbxer1YLBZUVYVhGAhJkrBtm36/z/V6pd1u47ouw+GQ+/3OH4/Fn8FvF/NxAAAAAElFTkSuQmCC" x="0" y="0" width="5" height="5" crossOrigin="anonymous" result="image1" />
+
+            <!--TÄÄ TEKEE PIKSELIULKONÄÖN-->
+            <feTile x="0" y="0" in="image1" result="tile" />
+            <feBlend mode="overlay" x="0%" y="0%" in="blend1" in2="tile" result="blend2" />
+
+            <!--SATURAATIO-->
+            <feColorMatrix type="saturate" values="0.05" />
+
+            <!--TÄLLÄ VOI MUOKATA RGB KANAVIA U KNOW-->
+            <feComponentTransfer>
+              <!--R-->
+              <feFuncR type="discrete" tableValues="0 0.85" />
+              <!--G-->
+              <feFuncG type="discrete" tableValues="0 0.75" />
+              <!--B-->
+              <feFuncB type="discrete" tableValues="0 0.8" />
+            </feComponentTransfer>
+          </filter>
+        </svg>
+      </div>
+      
+      <div class="hero-text">
+        <h1 class="htext">not.illegal</h1>
+        <h1 class="htext">not.<br>illegal</h1>
+      </div>
+    </div>
+</body>
+</html>
